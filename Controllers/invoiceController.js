@@ -57,9 +57,7 @@ exports.getAllInvoiceOfPatient = async (req, res) => {
     try {
         const allInvoicedet = await invoice.find({ userId: patientId });
         console.log(allInvoicedet);
-        if (allInvoicedet.length === 0) {
-            return res.status(404).json({ error: "No invoice found for this patient" });
-        }
+      
         res.status(200).json(allInvoicedet);
     } catch (error) {
         res.status(500).json({ error: "Internal server error", message: error.message });
